@@ -17,7 +17,9 @@ public class TopicController {
         topicRepository.save(new Topic(topicData));
     }
     @GetMapping
-    public List<Topic> listTopicitems(){
-        return topicRepository.findAll();
+    public List<ListedTopicData> listTopicitems(){
+        return topicRepository.findAll().stream()
+                .map(ListedTopicData::new)
+                .toList();
     }
 }

@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Table(name = "topic")
 @Entity(name = "Topic")
 @Getter
@@ -20,7 +22,8 @@ public class Topic {
     @Column(name = "nombre_curso") //tables in db should have this nomenclature
     private String nombreCurso;
     private String titulo;
-    private String fecha_creacion;
+    @Column(name = "fecha_creacion")
+    private String fechaCreacion;
     private String autor;
 
     //contructor
@@ -28,7 +31,7 @@ public class Topic {
         this.nombreCurso = topicData.nombreCurso();
         this.titulo = topicData.titulo();
         this.autor = topicData.autor();
-        this.fecha_creacion = topicData.fecha_creacion();
         this.mensaje = topicData.mensaje();
+        this.fechaCreacion = "";
     }
 }
