@@ -1,4 +1,4 @@
-package com.carlosvega.foro_hub.api.models;
+package com.carlosvega.foro_hub.api.topic;
 
 public record TopicData(
 //        Integer id_usuario,
