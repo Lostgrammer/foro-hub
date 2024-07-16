@@ -1,4 +1,4 @@
-package com.carlosvega.foro_hub.api.topic;
+package com.carlosvega.foro_hub.api.domain.topic;
 
 public record TopicResponseData(
         Long id_usuario,

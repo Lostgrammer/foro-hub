@@ -1,4 +1,4 @@
-package com.carlosvega.foro_hub.api.topic;
+package com.carlosvega.foro_hub.api.domain.topic;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
