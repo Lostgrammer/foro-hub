@@ -1,5 +1,6 @@
 package com.carlosvega.foro_hub.api.topic;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,12 +17,19 @@ public class TopicController {
     private TopicRepository topicRepository;
 
     @PostMapping
-    public void recieveTopic(@RequestBody @Valid TopicData topicData){
+    public void receiveTopic(@RequestBody @Valid TopicData topicData){
         topicRepository.save(new Topic(topicData));
     }
 
     @GetMapping
-    public Page<ListedTopicData> listTopicitems(Pageable pagination){
+    public Page<ListedTopicData> listTopicItems(@PageableDefault(size = 2) Pageable pagination){
         return topicRepository.findAll(pagination).map(ListedTopicData::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void updateTopic(@RequestBody @Valid UpdateTopicData updateTopicData){
+        Topic topic = topicRepository.getReferenceById(updateTopicData.id_usuario());
+        topic.updateData(updateTopicData);
     }
 }

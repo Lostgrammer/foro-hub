@@ -36,4 +36,19 @@ public class Topic {
         this.fechaCreacion = "";
         this.status = "";
     }
+
+    public void updateData(UpdateTopicData updateTopicData) {
+        if (updateTopicData.nombreCurso() != null){
+            this.nombreCurso = updateTopicData.nombreCurso();
+        }
+        if (updateTopicData.titulo() != null){
+            this.titulo = updateTopicData.titulo();
+        }
+        if (updateTopicData.autor() != null){
+            this.autor = updateTopicData.autor();
+        }
+        if (updateTopicData.mensaje() != null){
+            this.mensaje = updateTopicData.mensaje();
+        }
+    }
 }
