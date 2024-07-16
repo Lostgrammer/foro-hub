@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +19,9 @@ public class TopicController {
     public void recieveTopic(@RequestBody @Valid TopicData topicData){
         topicRepository.save(new Topic(topicData));
     }
+
     @GetMapping
-    public Page<ListedTopicData> listTopicitems(Pageable pagination){
+    public Page<ListedTopicData> listTopicitems(@PageableDefault(size = 2) Pageable pagination){
         return topicRepository.findAll(pagination).map(ListedTopicData::new);
     }
 }
