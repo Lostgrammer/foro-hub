@@ -8,8 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/topico")
 public class TopicController {
@@ -22,7 +20,7 @@ public class TopicController {
     }
 
     @GetMapping
-    public Page<ListedTopicData> listTopicItems(@PageableDefault(size = 2) Pageable pagination){
+    public Page<ListedTopicData> listTopicItems(@PageableDefault(size = 5) Pageable pagination){
         return topicRepository.findAll(pagination).map(ListedTopicData::new);
     }
 
@@ -31,5 +29,12 @@ public class TopicController {
     public void updateTopic(@RequestBody @Valid UpdateTopicData updateTopicData){
         Topic topic = topicRepository.getReferenceById(updateTopicData.id_usuario());
         topic.updateData(updateTopicData);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deteleTopic(@PathVariable Long id){
+        Topic topic = topicRepository.getReferenceById(id);
+        topicRepository.delete(topic);
     }
 }
