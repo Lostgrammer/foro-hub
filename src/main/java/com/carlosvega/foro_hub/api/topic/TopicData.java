@@ -12,15 +12,11 @@ public record TopicData(
 //        String creationDate,
 //        String author
         @NotBlank
-        String id_usuario,
-        @NotBlank
         String mensaje,
         @NotBlank
         String nombreCurso,
         @NotBlank
         String titulo,
-        @NotBlank
-        String fecha_creacion,
         @NotBlank
         String autor
 ) {
