@@ -21,7 +21,7 @@ public class TopicController {
     }
 
     @GetMapping
-    public Page<ListedTopicData> listTopicitems(@PageableDefault(size = 2) Pageable pagination){
+    public Page<ListedTopicData> listTopicitems(Pageable pagination){
         return topicRepository.findAll(pagination).map(ListedTopicData::new);
     }
 }

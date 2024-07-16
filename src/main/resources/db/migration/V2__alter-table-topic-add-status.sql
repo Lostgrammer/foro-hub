@@ -1,0 +1,1 @@
+alter table topic add status varchar(20) not null;

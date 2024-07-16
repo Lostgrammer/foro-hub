@@ -25,6 +25,7 @@ public class Topic {
     @Column(name = "fecha_creacion")
     private String fechaCreacion;
     private String autor;
+    private String status;
 
     //contructor
     public Topic(TopicData topicData) {
@@ -33,5 +34,6 @@ public class Topic {
         this.autor = topicData.autor();
         this.mensaje = topicData.mensaje();
         this.fechaCreacion = "";
+        this.status = "";
     }
 }
